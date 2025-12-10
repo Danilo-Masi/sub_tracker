@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-import subredditsRoutes from './routes/subreddits.mjs';
+import apiRoutes from './routes/api.mjs';
 
 const fastify = Fastify({
     logger: {
@@ -8,7 +8,7 @@ const fastify = Fastify({
     requestIdLogLabel: "rid"
 });
 
-fastify.register(subredditsRoutes);
+fastify.register(apiRoutes, { prefix: "/api" });
 
 try {
     await fastify.listen({ port: 3000 });
